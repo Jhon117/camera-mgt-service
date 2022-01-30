@@ -3,14 +3,7 @@ package stream.camera.management.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import stream.camera.management.dto.DeviceInfoDto;
 import stream.camera.management.dto.DeviceInfoPlainDto;
@@ -36,12 +29,17 @@ public class DeviceInfoController {
 
     @GetMapping("/stream-url/{uuid}")
     public String getDeviceStreamUrlByUuid(@PathVariable(value = "uuid") String uuid) {
-        return "Find stream url list for uuid " + uuid + "is " + deviceInfoService.getDeviceStreamUrlByUuid(uuid);
+        String[] streamUrlList = deviceInfoService.getDeviceStreamUrlByUuid(uuid);
+        String outPut = "Find stream url list for uuid " + uuid + " is ";
+        for(String streamUrl: streamUrlList) {
+            outPut += "\n" + streamUrl;
+        }
+        return outPut;
     }
 
     @GetMapping("/ip-address/{uuid}")
     public String getDeviceIpAddressByUuid(@PathVariable(value = "uuid") String uuid) {
-        return "Find stream url list for uuid " + uuid + "is " + deviceInfoService.getDeviceIpAddressByUuid(uuid);
+        return "Find stream url list for uuid " + uuid + " is " + deviceInfoService.getDeviceIpAddressByUuid(uuid);
     }
 
     @PostMapping("")
@@ -50,7 +48,7 @@ public class DeviceInfoController {
         return "Successfully create the device_info table row(s)";
     }
 
-    @PatchMapping("")
+    @PutMapping("")
     public String updateDeviceInfo(@RequestBody List<DeviceInfoDto> deviceInfoDtoList) {
         deviceInfoService.updateDeviceInfo(deviceInfoDtoList);
         return "Successfully update the device_info table row(s)";

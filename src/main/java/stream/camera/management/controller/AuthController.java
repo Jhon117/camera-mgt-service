@@ -31,7 +31,7 @@ public class AuthController {
         return "Successfully create the auth table row(s)";
     }
 
-    @PatchMapping("")
+    @PutMapping("")
     public String updateAuth(@RequestBody List<AuthDto> authDtoList) {
         authService.updateAuth(authDtoList);
         return "Successfully update the auth table row(s)";
