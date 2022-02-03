@@ -70,7 +70,6 @@ public class DeviceInfoService {
 
     public void updateDeviceInfo(List<DeviceInfoDto> deviceInfoDtoList) {
         for(DeviceInfoDto deviceInfoDto: deviceInfoDtoList) {
-            //TODO: judge if uuid exist is request
             DeviceInfo originDeviceInfo = deviceInfoRepository.findByUuid(deviceInfoDto.getUuid());
 
             String serialNumber = deviceInfoDto.getSerialNumber() == null ? originDeviceInfo.getSerialNumber() : deviceInfoDto.getSerialNumber();

@@ -49,7 +49,6 @@ public class AuthService {
     public void createAuth(List<AuthDto> authDtoList) {
         for(AuthDto authDto: authDtoList) {
             Auth auth = new Auth(authDto.getUuid(), authDto.getUsername(), authDto.getPassword(),
-                    //TODO create at and update at can be real time method
                     LocalDate.now(), authDto.getCreateBy(), null, null);
             this.authRepository.save(auth);
         }
@@ -57,7 +56,6 @@ public class AuthService {
 
     public void updateAuth(List<AuthDto> authDtoList) {
         for(AuthDto authDto: authDtoList) {
-            //TODO: judge if uuid exist is request
             Auth originAuth = authRepository.findByUuid(authDto.getUuid());
 
             String username = authDto.getUsername() == null ? originAuth.getUsername() : authDto.getUsername();
