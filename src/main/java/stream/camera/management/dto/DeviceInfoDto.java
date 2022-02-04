@@ -1,8 +1,6 @@
 package stream.camera.management.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DeviceInfoDto {
 

@@ -7,10 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import stream.camera.management.dto.AuthDto;
 import stream.camera.management.dto.DeviceInfoDto;
 import stream.camera.management.dto.DeviceInfoPlainDto;
-import stream.camera.management.model.Auth;
 import stream.camera.management.model.DeviceInfo;
 import stream.camera.management.repository.DeviceInfoRepository;
 import stream.camera.management.util.UtilMapper;
